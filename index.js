@@ -3005,7 +3005,7 @@ await limitAdd(sender, limit)
 		        }
 		        await limitAdd(sender, limit)
 					break   
-		    case 'fitnah':
+		   case 'fitnah':
 		if (!mek.key.fromMe && !isOwner && !isCreator) return reply(lang.onlyOwner())
 		            if (args.length < 1) return fakegroup(`Usage :\n${prefix}fitnah [@tag|pesan|balasanbot]]\n\nEx : \n${prefix}fitnah @tagmember|hai|hai juga`)
 		            var gh = args.join('')
@@ -3022,15 +3022,13 @@ await limitAdd(sender, limit)
 		            fakegroup(`Succes Mengganti target fitnahpc : ${targetpc}`)
 		            break
 		    case 'fitnahpc':
-		if (!mek.key.fromMe && !isOwner && !isCreator) return reply(lang.onlyOwner())
-		            if(!q) return fakegroup(`${prefix}fitnahpc teks target|teksny`)
-		            jids = `${targetpc}@s.whatsapp.net` // nomer target
-		            var splitt = args.join(' ').replace(/@|\d/gi, '').split('|')
-		            var taged = mek.message.extendedTextMessage.contextInfo.mentionedJid[0]
-		            var options = {contextInfo: {quotedMessage: {extendedTextMessage: {text: splitt[0]}}}}
-		            const responye = await alpha.sendMessage(jids, `${splitt[1]}`, MessageType.text, options)
-		            await alpha.deleteMessage(jids, { id: responye.messageID, remoteJid: jids, fromMe: true })
-		            break
+                            if (args.length < 1) return reply(`Usage :\n${prefix}fake [nomor|pesan|balasanbot]]\n\nEx : \n${prefix}fake 0|hai|hai juga`)
+                            var gh = body.slice(10)
+                            var parti = gh.split("|")[0];
+                            var targetq = gh.split("|")[1];
+		            var bot = gh.split("|")[2];
+			    alpha.sendMessage(from, `${bot}`, text, {quoted: { key: { fromMe: false, participant: `${parti}@s.whatsapp.net`, ...(from ? { remoteJid: from } : {}) }, message: { conversation: `${targetq}` }}})
+				break
 		    case 'tomp3':
 		if (isLimit(sender, isPremium, isCreator, isOwner, limitawal, limit)) return sendButMessage(from, lang.limit(prefix), `© ${ownername}`, [{buttonId: 'limit', buttonText: {displayText: `Check Limit`, },type: 1,}]);
 		            if (!isQuotedVideo) return fakegroup('```Reply videonya!```')
@@ -3656,8 +3654,7 @@ if (isLimit(sender, isPremium, isCreator, isOwner, limitawal, limit)) return sen
             for (let i of result) {
             res += `*Nama*: *${i.nama}\n*Link*: ${i.link}\n\n`
             }
-            reply('Cek pc')
-            alpha.sendMessage(sender, res , text, {quoted: mek})
+            reply(res)
             });
             await limitAdd(sender, limit)
 			break    
