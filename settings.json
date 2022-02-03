@@ -1,7 +1,7 @@
 {
     "self_mode": false,
 	"autobio": false,
-	"antihidetag": true,
+	"antihidetag": false,
 	"user_register": false,
 	"anti_delete" : false,
 	"anticall": false,
@@ -14,9 +14,9 @@
 	"cr": "Mr. Alip",
 	"ownername": "AlipWithF",
 	"botname":"YATTA CHICKEN",
-	"thumb":"ahri.jpg",
-	"thumbnail":"ahri.jpg",
-	"fakethumb":"ahri.jpg", 
+	"thumb":"thumbnail_1.jpg",
+	"thumbnail":"thumbnail_1.jpg",
+	"fakethumb":"thumbnail_1.jpg", 
 	"donasi":"donasi.jpg",
 	"fake": " 「  YATTAAAAA  」"
 }
